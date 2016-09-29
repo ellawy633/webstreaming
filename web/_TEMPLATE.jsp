@@ -22,13 +22,10 @@
 
         </div>
         <div class="titre">
-            Liste des films  
+            Titre  
         </div>
         <div class="contenu">
-            <c:forEach items="${mesFilms}" var = "filmAct">
-                ${filmAct.titre}
-                <br>
-            </c:forEach>
+            contenu
         </div>
         <div class="pied">
             <c:import url="_PIED.jsp"/>

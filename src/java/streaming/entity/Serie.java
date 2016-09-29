@@ -129,5 +129,9 @@ public class Serie implements Serializable {
     public String toString() {
         return "jpql.entity.Serie[ id=" + id + " ]";
     }
+
+    public List<Serie> lister() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

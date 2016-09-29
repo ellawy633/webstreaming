@@ -22,11 +22,11 @@
 
         </div>
         <div class="titre">
-            Liste des films  
+            Titre  
         </div>
         <div class="contenu">
-            <c:forEach items="${mesFilms}" var = "filmAct">
-                ${filmAct.titre}
+           <c:forEach items="${mesSeries}" var = "mesSerie">
+                ${mesSerie.titre}
                 <br>
             </c:forEach>
         </div>
