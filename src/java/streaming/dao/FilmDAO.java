@@ -33,7 +33,7 @@ public class FilmDAO {
     public void supprimerFilm(long id) {
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
         em.getTransaction().begin();
-        em.createQuery("DELETE FROM Film f WHERE f.id").executeUpdate();
+        em.createQuery("DELETE FROM Film f WHERE f.id="+id).executeUpdate();
         em.getTransaction().commit();
     }
 
