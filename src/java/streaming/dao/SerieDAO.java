@@ -27,8 +27,14 @@ public class SerieDAO {
         
         
     }
+
     
-    
+     public void ajouterSerie(Serie s) {
+        EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
+        em.getTransaction().begin();
+        em.persist(s);
+        em.getTransaction().commit();
+    }
     
     
     

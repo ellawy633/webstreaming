@@ -6,46 +6,41 @@
 package streaming.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import streaming.entity.Film;
-import streaming.service.FilmService;
+import streaming.entity.Serie;
+import streaming.entity.Serie_;
+import streaming.service.SerieService;
 
 /**
  *
  * @author admin
  */
-@WebServlet(name = "AjouterFilm", urlPatterns = {"/ajouter_film"})
-public class AjouterFilmServlet extends HttpServlet {
+@WebServlet(name = "AjouterSerie", urlPatterns = {"/ajouter_serie"})
+public class AjouterSerieServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      
-     
-        Film f =new Film();
-        
-        
+
+        Serie s = new Serie();
+
         //cree un nouveau film rt lr remplit avec donnees entrees par l'uitl dan le formulaire
-      f.setTitre( req.getParameter("titre")); 
-      f.setSynopsis( req.getParameter("synopsis")); 
-      f.setAnnee( Integer.valueOf(req.getParameter("anneeProd")) ); 
-      f.setDuree( Integer.valueOf(req.getParameter("duree")) ); 
-     
-      new FilmService().ajouterFilm(f);
-        
-   resp.sendRedirect("lister_films");
-        
-        
+        s.setTitre(req.getParameter("titre"));
+        s.setSynopsis(req.getParameter("synopsis"));
+
+        new SerieService().ajouterSerie(s);
+
+        resp.sendRedirect("lister_series");
+
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        req.getRequestDispatcher("ajouter_film.jsp").forward(req, resp);
+        req.getRequestDispatcher("ajouter_serie.jsp").forward(req, resp);
 
     }
 }

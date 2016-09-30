@@ -16,6 +16,21 @@ import streaming.entity.Serie;
  * @author admin
  */
 public class SerieService {
+    
+     public void ajouterSerie(Serie s) {
+        new SerieDAO().ajouterSerie(s);
+    }
+
+    
+   
+
+   
+    
+    
+    
+    
+    
+    
     public List<Serie> lister(){
 
         SerieDAO dao= new SerieDAO();
