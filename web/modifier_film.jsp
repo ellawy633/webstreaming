@@ -22,32 +22,26 @@
 
         </div>
         <div class="titre">
-            Nouveau film
+            Modifier film :${monFilm.titre}
         </div>
         <div class="contenu">
             <form method="POST">
+               
                 <label>Titre</label>
-                <input name="titre" type="text"/>
+                <input type="hidden" value="${monFilm.id}" name="id"/>
+                <input name="titre" type="text" value="${monFilm.titre}"/>
                 <br>
-                <label>Genre</label>
-                <select name="genreId">
-                    <c:forEach items="${genres}" var="genreAct">
-                        <option value="${genreAct.id}">${genreAct.nom}</option>   
-                    </c:forEach> 
-
-                </select>
-                <br>
-                    <label>Synopsis</label>
-                <textarea name="synopsis"></textarea>
+                <label>Synopsis</label>
+                <textarea name="synopsis">${monFilm.synopsis}</textarea>
                 <br>
                 <label>Annee de production </label>
-                <input name="anneeProd" type="text"/>
+                <input name="anneeProd" type="text" value="${monFilm.annee}" />
                 <br>
                 <label>duree en minutes </label>
-                <input name="duree" type="text"/>
+                <input name="duree" type="text"value="${monFilm.duree}"/>
                 <br>
-                <input type="submit" value="Ajouter"/>
-
+                <input type="submit" value="Modifier"/>
+                
             </form>
         </div>
         <div class="pied">

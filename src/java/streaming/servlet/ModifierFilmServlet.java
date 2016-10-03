@@ -14,20 +14,36 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import streaming.entity.Film;
 import streaming.service.FilmService;
-import streaming.service.GenreService;
 
 /**
  *
  * @author admin
  */
-@WebServlet(name = "AjouterFilm", urlPatterns = {"/ajouter_film"})
-public class AjouterFilmServlet extends HttpServlet {
+@WebServlet(name = "ModifierFilmServlet", urlPatterns = {"/modifier_film"})
+public class ModifierFilmServlet extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+       // recupere en fonction id
+        Film film = new FilmService().rechercheParId(Long.valueOf(req.getParameter("monId")));
+        
+
+//set attribu monfilm ver jsp
+        req.setAttribute("monFilm", film);
+       
+        
+
+//forward ver   jsp
+        req.getRequestDispatcher("modifier_film.jsp").forward(req, resp);
+        
+        
+        
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      
-     
-        Film f =new Film();
+       
+        Film f = new FilmService().rechercheParId(Long.valueOf(req.getParameter("id")));
         
         
         //cree un nouveau film rt lr remplit avec donnees entrees par l'uitl dan le formulaire
@@ -35,30 +51,12 @@ public class AjouterFilmServlet extends HttpServlet {
       f.setSynopsis( req.getParameter("synopsis")); 
       f.setAnnee( Integer.valueOf(req.getParameter("anneeProd")) ); 
       f.setDuree( Integer.valueOf(req.getParameter("duree")) ); 
-     // option clean
-     long idGenre =Long.valueOf(req.getParameter("genreId"));
-      Genre g =new GenreService().chercherParId(idGenre);
-      f.setGenre(g);
-      g.get
-      
-      //option crade 
-
-
-//ajout
-      new FilmService().ajouterFilm(f);
-      
-      
-      //redirect servlet listage films  
+     
+      new FilmService().modifierFilm(f);
+        
    resp.sendRedirect("lister_films");
         
-        
     }
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       req.setAttribute("genres", new GenreService().lister());
-        req.getRequestDispatcher("ajouter_film.jsp").forward(req, resp);
-        
-
-    }
+    
 }

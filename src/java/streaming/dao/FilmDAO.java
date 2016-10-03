@@ -43,6 +43,8 @@ public class FilmDAO {
         em.persist(f);
         em.getTransaction().commit();
     }
+    
+    
 
     public List<Film> listrFilms() {
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();

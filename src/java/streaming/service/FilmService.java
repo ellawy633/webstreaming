@@ -27,7 +27,7 @@ public class FilmService {
         new FilmDAO().modifierFilm(f);
     }
 
-    public Film rechercheParIdFilm(long id) {
+    public Film rechercheParId(long id) {
         return new FilmDAO().rechercheParIdFilm(id);
     }
 

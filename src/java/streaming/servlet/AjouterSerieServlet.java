@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import streaming.entity.Serie;
 import streaming.entity.Serie_;
+import streaming.service.GenreService;
 import streaming.service.SerieService;
 
 /**
@@ -39,7 +40,7 @@ public class AjouterSerieServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        req.setAttribute("genres", new GenreService().lister());
         req.getRequestDispatcher("ajouter_serie.jsp").forward(req, resp);
 
     }

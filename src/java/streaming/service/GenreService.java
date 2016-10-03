@@ -7,37 +7,31 @@ package streaming.service;
 
 import java.util.List;
 import streaming.dao.FilmDAO;
-import streaming.dao.SerieDAO;
+import streaming.dao.GenreDAO;
 import streaming.entity.Film;
-import streaming.entity.Serie;
+import streaming.entity.Genre;
 
 /**
  *
  * @author admin
  */
-public class SerieService {
-    
-     public void ajouterSerie(Serie s) {
-        new SerieDAO().ajouterSerie(s);
-    }
+public class GenreService {
 
     
-    public void supprimerSerie(long id) {
-        new SerieDAO().supprimerSerie(id);
-    }
 
-   
-    
-    
-    
-    
-    
-    
-    public List<Serie> lister(){
+    public List<Genre> lister() {
 
-        SerieDAO dao= new SerieDAO();
-        return dao.listerSeries();
+       GenreDAO dao = new GenreDAO();
+        return dao.listerGenres();
     }
+public Genre chercherParId(long id){
+    
+    
+    return new GenreDAO().recherche(id);
+    
+    
+    
+}
     
     
     
